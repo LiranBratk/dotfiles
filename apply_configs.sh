@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+SOURCE_DIR=$(pwd)
+DEST_DIR="$HOME/.config"
+EXCLUDE=(".git" "readme.md" "apply_configs.sh")
+
+echo -e "${YELLOW}Applying dotfiles...${NC}"
+
+mkdir -p "$DEST_DIR"
+
+for item in *; do
+    if [[ " ${EXCLUDE[*]} " =~ " ${item} " ]]; then
+        continue
+    fi
+
+    if [ -d "$item" ]; then
+        echo -e "${GREEN}Applying $item configuration...${NC}"
+        rsync -a --delete "$item" "$DEST_DIR/"
+    fi
+done
+
+echo -e "${YELLOW}Done.${NC}"
