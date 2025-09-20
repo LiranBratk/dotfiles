@@ -19,7 +19,8 @@
       "8": "",
       "9": "",
       "10": ""
-    }
+    },
+    "on-click": ""
   },
   "sway/window": {
     "rewrite": {
@@ -208,7 +209,6 @@
     "on-click": "wlogout -p layer-shell",
     "tooltip": false
   },
-
   // actually keeping this for later idk
   "custom/mpd": {
     "format": " {title} - {artist}",

@@ -3,6 +3,7 @@
   "position": "top",
   "height": 30,
   "margin": "0 0 0 0",
+  "cursor": "true",
   "modules-left": [
     "custom/launcher",
     "sway/workspaces",

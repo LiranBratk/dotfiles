@@ -56,25 +56,30 @@ window#waybar {
 
 /* Workspaces (sway/workspaces) */
 #workspaces {
-    border-style: solid;
-    background-color: @base;
-    opacity: 1;
-    border-radius: 10px;
-    margin: 8px 0 8px 8px;
-    padding: 0 10px;
+    background: transparent;
+    margin: 0 8px;
+    padding: 0;
+    border: none;
 }
-#workspaces * { color: whitesmoke; }
+
 #workspaces button {
-    color: @base;
-    border-radius: 50%;
-    margin: 0;
-    padding: 4 6 2 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0 6px;
+    min-width: 0;
+    box-shadow: none;
+    transition: none;
+    color: whitesmoke;
 }
-#workspaces button:hover,
-#workspaces button:hover * { color: @mauve; }
-#workspaces button.focused,
-#workspaces button.focused * { color: @mauve; }
-#workspaces button.focused { border-radius: 20px; }
+
+#workspaces button.focused {
+    color: @mauve;
+}
+
+#workspaces button:hover {
+    color: @mauve;
+}
 
 /* Window (sway/window) */
 #window {
@@ -83,9 +88,17 @@ window#waybar {
     margin-left: 10px;
     margin-right: 10px;
     background-color: @mauve;
-    color: #eceff4; /* unified color override */
+    color: #eceff4;
 }
-window#waybar.empty #window { background-color: transparent; }
+
+window#waybar.empty #window {
+    background-color: transparent;
+    transition: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    border: none;
+}
 
 /* MPD Cluster (mpd#2 / mpd#3 / mpd#4 / mpd) */
 #mpd {
@@ -94,14 +107,32 @@ window#waybar.empty #window { background-color: transparent; }
     margin-left: 5px;
     background-color: transparent;
 }
-#mpd.2 { /* previous */
+
+#mpd.2 {
+    /* previous */
     border-radius: 10px 0 0 10px;
     margin: 8px 0 8px 6px;
     padding: 4px 12px 4px 10px;
 }
-#mpd.3 { border-radius: 0; margin: 8px 0; padding: 4px; }
-#mpd.4 { border-radius: 0 10px 10px 0; margin: 8px 0; padding: 4px 10px 4px 14px; }
-#mpd.2, #mpd.3, #mpd.4 { background-color: @base; font-size: 14px; }
+
+#mpd.3 {
+    border-radius: 0;
+    margin: 8px 0;
+    padding: 4px;
+}
+
+#mpd.4 {
+    border-radius: 0 10px 10px 0;
+    margin: 8px 0;
+    padding: 4px 10px 4px 14px;
+}
+
+#mpd.2,
+#mpd.3,
+#mpd.4 {
+    background-color: @base;
+    font-size: 14px;
+}
 
 /* =============================================================
    Module Order: CENTER
@@ -119,40 +150,92 @@ window#waybar.empty #window { background-color: transparent; }
    ============================================================= */
 
 /* Backlight */
-#backlight { color: @yellow; border-radius: 10px 0 0 10px; }
+#backlight {
+    color: @yellow;
+    border-radius: 10px 0 0 10px;
+}
 
 /* Pulseaudio */
-#pulseaudio { color: @flamingo; }
-#pulseaudio.muted { color: #3b4252; }
+#pulseaudio {
+    color: @flamingo;
+}
+
+#pulseaudio.muted {
+    color: #3b4252;
+}
 
 /* Keyboard Layout */
-#custom-keyboard-layout { color: @peach; border-radius: 0 10px 10px 0; margin-right: 10px; }
+#custom-keyboard-layout {
+    color: @peach;
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+}
 
 /* Hardware Group (group/hardware) */
-#custom-system { color: @sky; }
-#disk { color: @sky; }
-#cpu { color: @sky; }
-#cpu #cpu-icon { color: @sky; }
-#memory { color: @sky; }
+#custom-system {
+    color: @sky;
+}
+
+#disk {
+    color: @sky;
+}
+
+#cpu {
+    color: @sky;
+}
+
+#cpu #cpu-icon {
+    color: @sky;
+}
+
+#memory {
+    color: @sky;
+}
 
 /* Battery */
-#battery { color: @green; border-radius: 0 10px 10px 0; margin-right: 10px; }
-#battery.charging { color: #81a1c1; }
-@keyframes blink { to { color: @red; } }
-#battery.warning:not(.charging) { color: @yellow; }
-#battery.critical:not(.charging) { color: #bf616a; animation: blink .5s linear infinite alternate; }
+#battery {
+    color: @green;
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+}
+
+#battery.charging {
+    color: #81a1c1;
+}
+
+@keyframes blink {
+    to {
+        color: @red;
+    }
+}
+
+#battery.warning:not(.charging) {
+    color: @yellow;
+}
+
+#battery.critical:not(.charging) {
+    color: #bf616a;
+    animation: blink .5s linear infinite alternate;
+}
 
 /* Network */
-#network { color: @green; border-radius: 10px; margin-right: 5px; }
-#network.disabled, #network.disconnected { color: #bf616a; }
+#network {
+    color: @green;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+#network.disabled,
+#network.disconnected {
+    color: #bf616a;
+}
 
 /* Power */
-#custom-power { color: @base; background-color: @red; border-radius: 10px; margin-left: 5px; margin-right: 15px; padding: 5px 10px; }
-
-/* =============================================================
-   Extra / Unused (still kept for future use)
-   ============================================================= */
-#custom-swap { border-radius: 10px; color: @base; margin-left: 10px; background-color: @mauve; }
-#custom-background { border-radius: 0 10px 10px 0; background-color: @base; color: white; padding: 5px 14px 5px 5px; }
-#custom-pacman { /* inherits shared block */ }
-#tray { margin: 8px 10px; border-radius: 10px; }
+#custom-power {
+    color: @base;
+    background-color: @red;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 15px;
+    padding: 5px 10px;
+}
