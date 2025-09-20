@@ -26,3 +26,4 @@ for item in *; do
 done
 
 echo -e "${YELLOW}Done.${NC}"
+pkill -x waybar && swaymsg reload

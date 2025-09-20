@@ -1,4 +1,9 @@
 {
+  "custom/launcher": {
+    "format": "",
+    "on-click": "rofi -show drun -replace",
+    "tooltip": false
+  },
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
@@ -16,17 +21,27 @@
       "10": ""
     }
   },
-  "mpd": {
-    "tooltip": true,
-    "tooltip-format": "{artist} - {album} - {title} - Total Time : {totalTime:%M:%S}",
-    "format": " {elapsedTime:%M:%S}",
-    "format-disconnected": "⚠  Disconnected",
-    "format-stopped": " Not Playing",
-    "on-click": "mpc toggle",
-    "state-icons": {
-      "playing": "",
-      "paused": ""
-    }
+  "sway/window": {
+    "rewrite": {
+      "(.*) - Brave": "$1",
+      "(.*) - Chromium": "$1",
+      "(.*) - Brave Search": "$1",
+      "(.*) - Outlook": "$1",
+      "(.*) Microsoft Teams": "$1"
+    },
+    "separate-outputs": true,
+    "format": "<span color=\"#24273a\" style=\"italic\">{}</span>"
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "custom/cava-internal": {
+    "exec": "sh ~/.config/waybar/scripts/Cava.sh",
+    "format": "{}",
+    "tooltip": false,
+    "on-click": "swaymsg reload & pkill waybar & waybar",
+    "layer": "below",
+    "output": "all"
   },
   "mpd#2": {
     "format": "",
@@ -54,48 +69,17 @@
     "format-stopped": "",
     "on-click": "mpc -q pause && mpc -q next && mpc -q start"
   },
-  "custom/swap": {
-    "on-click": "~/.config/waybar/scripts/swap.sh",
-    "format": "Bg  ",
+  "mpd": {
     "tooltip": true,
-    "tooltip-format": "Swap between waybar Themes"
-  },
-  "custom/mpd": {
-    "format": " {title} - {artist}",
-    "interval": 5,
-    "exec": "mpc current --format='\"title\":\"%title%\",\"artist\":\"%artist%\"'"
-  },
-  "custom/cava-internal": {
-    "exec": "sh ~/.config/waybar/scripts/Cava.sh",
-    "format": "{}",
-    "tooltip": false,
-    "on-click": "swaymsg reload & pkill waybar & waybar",
-    "layer": "below",
-    "output": "all"
-  },
-  "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
-  "sway/window": {
-    "rewrite": {
-      "(.*) - Brave": "$1",
-      "(.*) - Chromium": "$1",
-      "(.*) - Brave Search": "$1",
-      "(.*) - Outlook": "$1",
-      "(.*) Microsoft Teams": "$1"
-    },
-    "separate-outputs": true,
-    "format": "<span color=\"#24273a\" style=\"italic\">{}</span>"
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
+    "tooltip-format": "{artist} - {album} - {title} - Total Time : {totalTime:%M:%S}",
+    "format": " {elapsedTime:%M:%S}",
+    "format-disconnected": "⚠  Disconnected",
+    "format-stopped": " Not Playing",
+    "on-click": "mpc toggle",
+    "state-icons": {
+      "playing": "",
+      "paused": ""
     }
-  },
-  "tray": {
-    "spacing": 5
   },
   "clock": {
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
@@ -124,41 +108,6 @@
     "format-alt": "  {:%Y-%m-%d  %H:%M:%S}",
     "interval": 1
   },
-  "custom/system": {
-    "format": "",
-    "tooltip": false
-  },
-  "cpu": {
-    "format": " {usage: >3}%",
-    "on-click": "alacritty -e htop"
-  },
-  "memory": {
-    "format": " {: >3}%",
-    "on-click": "alacritty -e htop"
-  },
-  "temperature": {
-    "thermal-zone": 4,
-    "critical-threshold": 80,
-    "format": "  {temperatureC}°C"
-  },
-  "disk": {
-    "format": " {percentage_used}% ",
-    "path": "/"
-  },
-  "group/hardware": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 300,
-      "children-class": "not-memory",
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "custom/system",
-      "disk",
-      "cpu",
-      "memory"
-    ]
-  },
   "backlight": {
     "format": "{icon} {percent: >3}%",
     "format-icons": [
@@ -175,6 +124,53 @@
     "on-scroll-down": "brightnessctl -c backlight set 5%-",
     "on-scroll-up": "brightnessctl -c backlight set +5%",
     "on-click": ""
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume: >3}%",
+    "format-bluetooth": "{icon} {volume: >3}%",
+    "format-muted": " muted",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+  },
+  "custom/keyboard-layout": {
+    "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+    "interval": 1,
+    "format": "  {}",
+    "signal": 1,
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/keyhint.sh"
+  },
+  "temperature": {
+    "thermal-zone": 4,
+    "critical-threshold": 80,
+    "format": "  {temperatureC}°C"
+  },
+  "group/hardware": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "not-memory",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/system",
+      "disk",
+      "cpu",
+      "memory"
+    ]
   },
   "battery": {
     "states": {
@@ -204,25 +200,38 @@
     "tooltip-format-disconnected": "⚠  Disconnected",
     "on-click": "nm-connection-editor"
   },
-  "pulseaudio": {
-    "format": "{icon} {volume: >3}%",
-    "format-bluetooth": "{icon} {volume: >3}%",
-    "format-muted": " muted",
+  "idle_inhibitor": {
+    "format": "{icon}",
     "format-icons": {
-      "headphones": "",
-      "handsfree": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": [
-        "",
-        ""
-      ]
-    },
-    "on-click": "pavucontrol",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "wlogout -p layer-shell",
+    "tooltip": false
+  },
+  "custom/system": {
+    "format": "",
+    "tooltip": false
+  },
+  "cpu": {
+    "format": " {usage: >3}%",
+    "on-click": "alacritty -e htop"
+  },
+  "memory": {
+    "format": " {: >3}%",
+    "on-click": "alacritty -e htop"
+  },
+  "disk": {
+    "format": " {percentage_used}% ",
+    "path": "/"
+  },
+  "custom/mpd": {
+    "format": " {title} - {artist}",
+    "interval": 5,
+    "exec": "mpc current --format='\"title\":\"%title%\",\"artist\":\"%artist%\"'"
   },
   "custom/pacman": {
     "format": " {}",
@@ -231,23 +240,5 @@
     "exec-if": "exit 0",
     "on-click": "alacritty -e sudo pacman -Syu",
     "signal": 8
-  },
-  "custom/power": {
-    "format": "⏻",
-    "on-click": "wlogout -p layer-shell",
-    "tooltip": false
-  },
-  "custom/keyboard-layout": {
-    "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
-    "interval": 1,
-    "format": "  {}",
-    "signal": 1,
-    "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/keyhint.sh"
-  },
-  "custom/launcher": {
-    "format": "",
-    "on-click": "rofi -show drun -replace",
-    "tooltip": false
   }
 }
