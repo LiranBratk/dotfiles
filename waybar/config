@@ -7,8 +7,6 @@
     "custom/launcher",
     "sway/workspaces",
     "sway/window",
-    "sway/mode",
-    "custom/cava-internal",
     "mpd#2",
     "mpd#3",
     "mpd#4",
@@ -21,11 +19,9 @@
     "backlight",
     "pulseaudio",
     "custom/keyboard-layout",
-    "temperature",
     "group/hardware",
     "battery",
     "network",
-    "idle_inhibitor",
     "custom/power"
   ],
   "include": [
