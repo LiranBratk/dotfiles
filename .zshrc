@@ -6,15 +6,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ########################################
-# OH MY ZSH CORE
+# CORE FEATURES
 ########################################
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-ENABLE_CORRECTION="true"
+setopt AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_SILENT PUSHD_TO_HOME
+setopt EXTENDED_HISTORY HIST_EXPIRE_DUPS_FIRST HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_SAVE_NO_DUPS HIST_VERIFY
 HIST_STAMPS="dd/mm/yyyy"
-plugins=()  # migrated to zinit-managed plugins below
-source $ZSH/oh-my-zsh.sh
-source <(fzf --zsh)
+export DIRSTACKSIZE=20
 
 ########################################
 # ZINIT BOOTSTRAP
@@ -45,8 +42,15 @@ zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
-zinit snippet OMZ::plugins/git/git.plugin.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+########################################
+# COMPLETION SYSTEM INIT
+########################################
+[ -d "$HOME/.cache/zsh" ] || mkdir -p "$HOME/.cache/zsh"
+autoload -Uz compinit
+compinit -d "$HOME/.cache/zsh/zcompdump"
+source <(fzf --zsh)
 
 ########################################
 # KEYBINDINGS
@@ -100,6 +104,3 @@ alias google="googler"
 alias brave='brave-browser'
 alias files='nautilus ./ &'
 export PATH="$HOME/go/bin:$HOME/.cargo/bin:$PATH"
-export MPD_HOST="localhost"
-export MPD_PORT="6600"
-
