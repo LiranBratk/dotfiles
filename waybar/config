@@ -8,10 +8,7 @@
     "custom/launcher",
     "sway/workspaces",
     "sway/window",
-    "mpd#2",
-    "mpd#3",
-    "mpd#4",
-    "mpd"
+    "group/player"
   ],
   "modules-center": [
     "clock",

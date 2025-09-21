@@ -36,43 +36,32 @@
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
   },
-  "mpd#2": {
+  "group/player": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/player-prev",
+      "custom/player-play",
+      "custom/player-next"
+    ]
+  },
+  "custom/player-prev": {
     "format": "",
-    "format-disconnected": "",
-    "format-paused": "",
-    "format-stopped": "",
-    "on-click": "mpc -q pause && mpc -q prev && mpc -q start"
+    "tooltip": false,
+    "on-click": "playerctl previous"
   },
-  "mpd#3": {
-    "interval": 1,
-    "format": "{stateIcon}",
-    "format-disconnected": "",
-    "format-paused": "{stateIcon}",
-    "format-stopped": "",
-    "state-icons": {
-      "paused": "",
-      "playing": ""
-    },
-    "on-click": "mpc toggle"
+  "custom/player-play": {
+    "exec": "WAYBAR_RUN_ONCE=0 ~/.config/waybar/scripts/player_status.sh",
+    "return-type": "json",
+    "interval": 0,
+    "on-click": "playerctl play-pause",
+    "signal": 8,
+    "format": "{text}",
+    "tooltip": true
   },
-  "mpd#4": {
+  "custom/player-next": {
     "format": "",
-    "format-disconnected": "",
-    "format-paused": "",
-    "format-stopped": "",
-    "on-click": "mpc -q pause && mpc -q next && mpc -q start"
-  },
-  "mpd": {
-    "tooltip": true,
-    "tooltip-format": "{artist} - {album} - {title} - Total Time : {totalTime:%M:%S}",
-    "format": " {elapsedTime:%M:%S}",
-    "format-disconnected": "⚠  Disconnected",
-    "format-stopped": " Not Playing",
-    "on-click": "mpc toggle",
-    "state-icons": {
-      "playing": "",
-      "paused": ""
-    }
+    "tooltip": false,
+    "on-click": "playerctl next"
   },
   "clock": {
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
@@ -213,11 +202,6 @@
     "format": "⏻",
     "on-click": "wlogout -p layer-shell",
     "tooltip": false
-  },
-  // actually keeping this for later idk
-  "custom/mpd": {
-    "format": " {title} - {artist}",
-    "interval": 5,
-    "exec": "mpc current --format='\"title\":\"%title%\",\"artist\":\"%artist%\"'"
   }
+  
 }

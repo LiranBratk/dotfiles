@@ -18,8 +18,6 @@ window#waybar {
 
 /* Shared module base styling */
 #clock,
-#custom-swap,
-#custom-background,
 #battery,
 #cpu,
 #memory,
@@ -32,9 +30,7 @@ window#waybar {
 #window,
 #tray,
 #custom-power,
-#custom-pacman,
-#custom-system,
-#mpd {
+#custom-system {
     padding: 5px 8px;
     border-style: solid;
     background-color: shade(@base, 1.1);
@@ -100,38 +96,34 @@ window#waybar.empty #window {
     border: none;
 }
 
-/* MPD Cluster (mpd#2 / mpd#3 / mpd#4 / mpd) */
-#mpd {
-    border-radius: 10px;
-    color: @mauve;
-    margin-left: 5px;
-    background-color: transparent;
-}
 
-#mpd.2 {
-    /* previous */
-    border-radius: 10px 0 0 10px;
+/* Custom Player Placeholder (group/player) */
+#group-player {
     margin: 8px 0 8px 6px;
-    padding: 4px 12px 4px 10px;
+    border-radius: 10px;
+    background: transparent;
+    padding: 0;
 }
 
-#mpd.3 {
-    border-radius: 0;
-    margin: 8px 0;
-    padding: 4px;
-}
-
-#mpd.4 {
-    border-radius: 0 10px 10px 0;
-    margin: 8px 0;
-    padding: 4px 10px 4px 14px;
-}
-
-#mpd.2,
-#mpd.3,
-#mpd.4 {
+#custom-player-prev,
+#custom-player-play,
+#custom-player-next {
     background-color: @base;
+    margin: 8px 0;
+    padding: 4px 10px;
     font-size: 14px;
+    color: @mauve;
+}
+
+#custom-player-prev { border-radius: 10px 0 0 10px; }
+#custom-player-play { border-radius: 0; }
+#custom-player-next { border-radius: 0 10px 10px 0; }
+
+#custom-player-prev:hover,
+#custom-player-play:hover,
+#custom-player-next:hover {
+    background-color: shade(@base, 1.15);
+    color: @sky;
 }
 
 /* =============================================================
