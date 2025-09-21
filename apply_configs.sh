@@ -8,7 +8,7 @@ NC='\033[0m'
 
 SOURCE_DIR=$(pwd)
 DEST_DIR="$HOME/.config"
-EXCLUDE=(".git" "readme.md" "apply_configs.sh")
+EXCLUDE=(".git" "readme.md" "apply_configs.sh" ".zshrc")
 
 echo -e "${YELLOW}Applying dotfiles...${NC}"
 
@@ -28,6 +28,13 @@ for item in *; do
         fi
     fi
 done
+
+echo -e "${GREEN}Applying .zshrc configuration...${NC}"
+cp .zshrc "$HOME/"
+# Do not source Zsh config inside a Bash process (zsh-only parameter expansions cause errors)
+if command -v zsh >/dev/null 2>&1; then
+    zsh -ic 'echo Reloaded .zshrc in a subshell.' >/dev/null 2>&1 || true
+fi
 
 echo -e "${YELLOW}Done.${NC}"
 pkill -x waybar && swaymsg reload
