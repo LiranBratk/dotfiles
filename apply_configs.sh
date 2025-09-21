@@ -22,6 +22,10 @@ for item in *; do
     if [ -d "$item" ]; then
         echo -e "${GREEN}Applying $item configuration...${NC}"
         rsync -a --delete "$item" "$DEST_DIR/"
+
+        if [ -d "$DEST_DIR/$item" ]; then
+            find "$DEST_DIR/$item" -type f -name "*.sh" -exec chmod +x {} + 2>/dev/null || true
+        fi
     fi
 done
 

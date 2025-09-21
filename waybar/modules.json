@@ -104,7 +104,7 @@
   "backlight": {
     "format": "{icon} {percent: >3}%",
     "format-icons": [
-      "",
+      "",
       "",
       "",
       "",
