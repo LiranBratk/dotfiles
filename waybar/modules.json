@@ -101,6 +101,11 @@
     "format-alt": "  {:%Y-%m-%d  %H:%M:%S}",
     "interval": 1
   },
+  "bluetooth": {
+    "format-connected": "🔗 {num_connections}",
+    "tooltip": true,
+    "on-click": "kitty -e bluetui"
+  },
   "backlight": {
     "format": "{icon} {percent: >3}%",
     "format-icons": [

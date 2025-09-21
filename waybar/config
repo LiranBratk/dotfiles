@@ -14,7 +14,8 @@
     "mpd"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "bluetooth"
   ],
   "modules-right": [
     "backlight",
