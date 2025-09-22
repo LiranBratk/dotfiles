@@ -8,7 +8,7 @@ NC='\033[0m'
 
 SOURCE_DIR=$(pwd)
 DEST_DIR="$HOME/.config"
-EXCLUDE=(".git" "readme.md" "apply_configs.sh" ".zshrc")
+EXCLUDE=(".git" "readme.md" "apply_configs.sh" ".zshrc" '.vscode')
 
 echo -e "${YELLOW}Applying dotfiles...${NC}"
 
