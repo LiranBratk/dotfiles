@@ -1,8 +1,13 @@
-# set background
-output * bg /home/liran/.config/backgrounds/003.jpg fill
+# ╔═══════════════════════════════════════════════════════════════════════════════╗
+# ║                                SWAY CONFIG                                    ║
+# ╚═══════════════════════════════════════════════════════════════════════════════╝
 
-# include custom sway config
+# ═══════════════════════════════════════════════════════════════════════════════
+#                                CONFIG INCLUDES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Custom sway configuration
 include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf"
 
-# include default sway config
+# Default sway configuration
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf")'

@@ -1,8 +1,14 @@
-/**
- * Copyright (C) 2020-2023 Aditya Shakya <adi1090x@gmail.com>
- **/
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║                                ROFI CONFIG                                    ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
 
-/*****----- Configuration -----*****/
+/* ═══════════════════════════════════════════════════════════════════════════════
+                                  CONFIGURATION
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@import                          "shared/colors.rasi"
+@import                          "shared/fonts.rasi"
+
 configuration {
 	modi:                       "drun,run,window";
     show-icons:                 true;
@@ -10,16 +16,17 @@ configuration {
     display-run:                "";
     display-window:             "";
 	drun-display-format:        "{name}";
-
 }
 
-/*****----- Global Properties -----*****/
-@import                          "shared/colors.rasi"
-@import                          "shared/fonts.rasi"
+/* ═══════════════════════════════════════════════════════════════════════════════
+                                GLOBAL PROPERTIES
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
-/*****----- Main Window -----*****/
+/* ═══════════════════════════════════════════════════════════════════════════════
+                                  MAIN WINDOW
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
 window {
-    /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
@@ -27,8 +34,6 @@ window {
     width:                       800px;
     x-offset:                    0px;
     y-offset:                    0px;
-
-    /* properties for all widgets */
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
@@ -39,7 +44,10 @@ window {
     background-color:            @background;
 }
 
-/*****----- Main Box -----*****/
+/* ═══════════════════════════════════════════════════════════════════════════════
+                                   MAIN BOX
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
 mainbox {
     enabled:                     true;
     spacing:                     10px;
@@ -49,7 +57,9 @@ mainbox {
     children:                    [ "inputbar", "message", "listview", "mode-switcher" ];
 }
 
-/*****----- Inputbar -----*****/
+/* ═══════════════════════════════════════════════════════════════════════════════
+                                   INPUT BAR
+   ═══════════════════════════════════════════════════════════════════════════════ */
 inputbar {
     enabled:                     true;
     spacing:                     10px;
@@ -86,7 +96,9 @@ entry {
     placeholder-color:           inherit;
 }
 
-/*****----- Listview -----*****/
+/* ═══════════════════════════════════════════════════════════════════════════════
+                                  LIST VIEW
+   ═══════════════════════════════════════════════════════════════════════════════ */
 listview {
     enabled:                     true;
     columns:                     2;
@@ -111,7 +123,9 @@ scrollbar {
     background-color:            @background-alt;
 }
 
-/*****----- Elements -----*****/
+/* ═══════════════════════════════════════════════════════════════════════════════
+                                   ELEMENTS
+   ═══════════════════════════════════════════════════════════════════════════════ */
 element {
     enabled:                     true;
     spacing:                     10px;
@@ -130,8 +144,6 @@ element alternate.normal {
 element normal.urgent,
 element alternate.urgent,
 element selected.active {
-    //background-color:            var(urgent);
-    //text-color:                  var(background);
     background-color:            var(background);
     text-color:                  var(foreground);
     border:			 0px 2px 2px 0px;
@@ -168,7 +180,9 @@ element-text {
     horizontal-align:            0.0;
 }
 
-/*****----- Mode Switcher -----*****/
+/* ═══════════════════════════════════════════════════════════════════════════════
+                                MODE SWITCHER
+   ═══════════════════════════════════════════════════════════════════════════════ */
 mode-switcher{
     enabled:                     true;
     spacing:                     10px;
@@ -194,7 +208,9 @@ button selected {
     border-color:		 var(urgent);
 }
 
-/*****----- Message -----*****/
+/* ═══════════════════════════════════════════════════════════════════════════════
+                                   MESSAGE
+   ═══════════════════════════════════════════════════════════════════════════════ */
 message {
     enabled:                     true;
     margin:                      0px;

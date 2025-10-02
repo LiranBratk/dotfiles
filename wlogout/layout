@@ -5,6 +5,24 @@
     "keybind" : "q"
 }
 {
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot (r)",
+    "keybind" : "r"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Shutdown (w)",
+    "keybind" : "w"
+}
+{
+    "label" : "",
+    "action" : "",
+    "text" : "",
+    "keybind" : ""
+}
+{
     "label" : "logout",
     "action" : "swaymsg exit",
     "text" : "Logout (e)",
@@ -15,22 +33,4 @@
     "action" : "systemctl suspend",
     "text" : "Suspend (s)",
     "keybind" : "s"
-}
-{
-    "label" : "shutdown",
-    "action" : "systemctl poweroff",
-    "text" : "Shutdown (w)",
-    "keybind" : "w"
-}
-{
-    "label" : "reboot",
-    "action" : "systemctl reboot",
-    "text" : "Reboot (r)",
-    "keybind" : "r"
-}
-{
-    "label" : "nth bro",
-    "action" : "",
-    "text" : "🥀",
-    "keybind" : ""
 }
