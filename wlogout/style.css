@@ -61,6 +61,10 @@ button:focus, button:active, button:hover {
     background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
 }
 
+#monitors_manager {
+    background-image: image(url("/usr/share/wlogout/icons/monitors_manager.png"), url("/usr/local/share/wlogout/icons/monitors_manager.png"));
+}
+
 #reboot {
     background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
 }

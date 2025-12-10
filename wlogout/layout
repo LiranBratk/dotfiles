@@ -17,10 +17,10 @@
     "keybind" : "w"
 }
 {
-    "label" : "",
-    "action" : "",
-    "text" : "",
-    "keybind" : ""
+    "label" : "monitors_manager",
+    "action" : "wdisplays",
+    "text" : "Monitors Manager (m)",
+    "keybind" : "m"
 }
 {
     "label" : "logout",
