@@ -68,8 +68,10 @@ window#waybar {
 
 #workspaces button {
     background: transparent;
-    border: none;
-    border-radius: 0;
+    /* border: none;
+    border-radius: 0; */
+    border: 1px solid;
+    border-radius: 25%;
     padding: 0 6px;
     min-width: 0;
     box-shadow: none;
