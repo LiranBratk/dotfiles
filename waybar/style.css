@@ -81,6 +81,7 @@ window#waybar {
 
 #workspaces button.focused {
     color: @mauve;
+    font-weight: 900;
 }
 
 #workspaces button:hover {
